@@ -8,6 +8,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.create(site_params)
+    render json: @site, status: 201
   end
 
   def show
