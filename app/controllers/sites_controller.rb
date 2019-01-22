@@ -9,7 +9,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.create(site_params)
     if @site.save
-    render json: @site, status: 201
+      render json: @site, status: 201
     else
       render json: { errors: @site.errors.full_message }, status: :unprocessible_entity
     end
@@ -31,7 +31,7 @@ class SitesController < ApplicationController
   private
 
   def site_params
-    params.permit(:name, :price)
+    params.permit(:name)
   end
 
   def find_site
