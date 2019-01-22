@@ -8,7 +8,11 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.create(site_params)
+    if @site.save
     render json: @site, status: 201
+    else
+      render json: { errors: @site.errors.full_message }, status: :unprocessible_entity
+    end
   end
 
   def show
@@ -16,7 +20,7 @@ class SitesController < ApplicationController
   end
 
   def update
-    @site.update(strong_params)
+    @site.update(site_params)
     if @site.save
       render json: @site, status: :accepted
     else
