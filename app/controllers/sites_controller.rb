@@ -31,7 +31,7 @@ class SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:name, :price)
+    params.permit(:name, :price)
   end
 
   def find_site
